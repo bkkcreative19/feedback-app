@@ -13,8 +13,8 @@ import {
   UpvotesImg,
   UpvotesNum,
 } from "./Styles";
-import UpArrow from "../../../../assets/shared/icon-arrow-up.svg";
-import CommentLogo from "../../../../assets/shared/icon-comments.svg";
+import UpArrow from "../../../assets/shared/icon-arrow-up.svg";
+import CommentLogo from "../../../assets/shared/icon-comments.svg";
 export const Feedback = ({ feedback }) => {
   return (
     <FeedbackStyles>
@@ -29,7 +29,9 @@ export const Feedback = ({ feedback }) => {
         </TextContent>
         <Comment>
           <CommentImage src={CommentLogo} />
-          <CommentNumber>{feedback.comments.length}</CommentNumber>
+          {feedback.comments && (
+            <CommentNumber>{feedback.comments.length}</CommentNumber>
+          )}
         </Comment>
       </FeedbackTop>
       <Status>{feedback.status}</Status>

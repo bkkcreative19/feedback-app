@@ -1,8 +1,12 @@
 import { Router } from "express";
-import { listFeedbacks } from "../controllers/feedback.controller";
+import {
+  listFeedback,
+  listFeedbacks,
+} from "../controllers/feedback.controller";
 
 const router = Router();
 
 router.get("/", listFeedbacks);
+router.get("/:feedbackId", listFeedback);
 
 export default router;

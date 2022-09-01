@@ -4,9 +4,8 @@ export const FeedbackStyles = styled.div`
   display: flex;
   background: #fff;
   flex-direction: column;
-  margin-top: 1.5em;
   border-radius: 10px;
-  padding: 2em;
+  padding: 3em;
   cursor: pointer;
 `;
 

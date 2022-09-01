@@ -30,9 +30,9 @@ export const Roadmap = () => {
         <RoadmapHeadTitle>Roadmap</RoadmapHeadTitle>
         <RoadmapHeadLink>View</RoadmapHeadLink>
       </RoadmapHead>
-      {options.map((option) => {
+      {options.map((option, idx) => {
         return (
-          <RoadmapOption>
+          <RoadmapOption key={idx}>
             <RoadmapOptionText>{option.status}</RoadmapOptionText>
             <RoadmapOptionNumber>{option.number}</RoadmapOptionNumber>
           </RoadmapOption>

@@ -28,10 +28,7 @@ class User extends BaseEntity {
   @Length(4, 100)
   password: string;
 
-  @Column("varchar", {
-    default:
-      "https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png",
-  })
+  @Column("varchar")
   userLogo: string;
 
   @Column()
@@ -46,9 +43,7 @@ class User extends BaseEntity {
     this.password = bcrypt.hashSync(this.password, 8);
   }
 
-  @OneToMany(() => Comment, (comment) => comment.user, {
-    eager: true,
-  })
+  @OneToMany(() => Comment, (comment) => comment.user, {})
   comments: Comment[];
   @OneToMany(() => Reply, (reply) => reply.user, {
     eager: true,

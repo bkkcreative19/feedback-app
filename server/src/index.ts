@@ -26,10 +26,10 @@ const initializeExpress = (): void => {
   app.use(morgan("tiny"));
   app.use("/api", routes);
 
-  // app.get("/", async (_req, res) => {
-  //   const data = await insertData();
-  //   res.send(data);
-  // });
+  app.get("/", async (_req, res) => {
+    const data = await insertData();
+    res.send(data);
+  });
 
   const PORT = process.env.PORT || 5001;
 

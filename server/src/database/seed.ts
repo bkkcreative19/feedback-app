@@ -1,6 +1,6 @@
-import { Feedback } from "../entities";
+import { Feedback, Comment, User } from "../entities";
 
-import { createEntity } from "../utils/typeorm";
+import { createEntity, findEntityOrThrow } from "../utils/typeorm";
 
 import fs from "fs";
 
@@ -35,10 +35,35 @@ const seedFeedbacks = (): Promise<Feedback[]> => {
   return Promise.all(feedbacks);
 };
 
+const seedComments = async (feedbackId: any): Promise<any> => {
+  const user = await findEntityOrThrow(User, {});
+  const comments = data.productRequests
+    .map((product: any) => product.comments)
+    .flat();
+  const filteredComments = comments.filter(
+    (comment: any) => comment !== undefined
+  );
+
+  const arr: any[] = [];
+
+  filteredComments.map((comment: any) => {
+    arr.push(
+      createEntity(Comment, {
+        content: comment.content,
+        feedback: feedbackId,
+        user: user[0].id,
+      })
+    );
+  });
+
+  return Promise.all(arr);
+};
+
 const insertData = async (): Promise<any> => {
   const feedbacks = await seedFeedbacks();
-
-  return feedbacks;
+  const comments = await seedComments(feedbacks[0].id);
+  // console.log(comments.flat());
+  return comments;
 };
 
 export default insertData;

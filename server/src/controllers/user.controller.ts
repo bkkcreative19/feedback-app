@@ -7,10 +7,11 @@ import { AppDataSource } from "../database/connection";
 
 export const createUser = async (req: Request, res: Response) => {
   //Get parameters from the body
-  let { username, password } = req.body;
+  let { username, password, userLogo } = req.body;
   let user = new User();
   user.username = username;
   user.password = password;
+  user.userLogo = userLogo;
 
   //Validade if the parameters are ok
   const errors = await validate(user);

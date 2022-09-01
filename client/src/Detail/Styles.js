@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-export const FeedbackListStyles = styled.div`
-  margin-top: 1.5em;
+export const DetailsStyles = styled.section`
   display: flex;
   flex-direction: column;
   gap: 2em;
+  width: 730px;
 `;
