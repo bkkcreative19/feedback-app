@@ -7,6 +7,7 @@ import {
   UpdateDateColumn,
   OneToMany,
 } from "typeorm";
+import Comment from "./Comment";
 
 @Entity()
 class Feedback extends BaseEntity {
@@ -27,6 +28,11 @@ class Feedback extends BaseEntity {
 
   @Column("varchar")
   description: string;
+
+  @OneToMany(() => Comment, (comment) => comment.feedback, {
+    eager: true,
+  })
+  comments: Comment[];
 }
 
 export default Feedback;

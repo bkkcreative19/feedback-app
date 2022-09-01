@@ -16,7 +16,6 @@ import {
 import UpArrow from "../../../../assets/shared/icon-arrow-up.svg";
 import CommentLogo from "../../../../assets/shared/icon-comments.svg";
 export const Feedback = ({ feedback }) => {
-  console.log(feedback);
   return (
     <FeedbackStyles>
       <FeedbackTop>
@@ -30,7 +29,7 @@ export const Feedback = ({ feedback }) => {
         </TextContent>
         <Comment>
           <CommentImage src={CommentLogo} />
-          <CommentNumber>5</CommentNumber>
+          <CommentNumber>{feedback.comments.length}</CommentNumber>
         </Comment>
       </FeedbackTop>
       <Status>{feedback.status}</Status>

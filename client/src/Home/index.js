@@ -9,7 +9,7 @@ export const Home = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const { data } = await axios.get("http://localhost:5001/feedbacks");
+      const { data } = await axios.get("http://localhost:5001/api/feedbacks");
       setFeedbacks(data);
     };
 

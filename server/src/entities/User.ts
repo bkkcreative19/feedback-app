@@ -1,0 +1,63 @@
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  Unique,
+  CreateDateColumn,
+  UpdateDateColumn,
+  OneToMany,
+  BaseEntity,
+  JoinColumn,
+} from "typeorm";
+import { Length, IsNotEmpty } from "class-validator";
+
+import * as bcrypt from "bcryptjs";
+import Comment from "./Comment";
+import Reply from "./Reply";
+
+@Entity()
+class User extends BaseEntity {
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  @Column("varchar")
+  @Length(4, 20)
+  username: string;
+
+  @Column("varchar")
+  @Length(4, 100)
+  password: string;
+
+  @Column("varchar", {
+    default:
+      "https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png",
+  })
+  userLogo: string;
+
+  @Column()
+  @CreateDateColumn({ type: "timestamp" })
+  createdAt: Date;
+
+  @Column()
+  @UpdateDateColumn({ type: "timestamp" })
+  updatedAt: Date;
+
+  hashPassword() {
+    this.password = bcrypt.hashSync(this.password, 8);
+  }
+
+  @OneToMany(() => Comment, (comment) => comment.user, {
+    eager: true,
+  })
+  comments: Comment[];
+  @OneToMany(() => Reply, (reply) => reply.user, {
+    eager: true,
+  })
+  replies: Reply[];
+
+  checkIfUnencryptedPasswordIsValid(unencryptedPassword: string) {
+    return bcrypt.compareSync(unencryptedPassword, this.password);
+  }
+}
+
+export default User;

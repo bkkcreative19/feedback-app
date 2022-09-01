@@ -7,6 +7,7 @@ export const FeedbackStyles = styled.div`
   margin-top: 1.5em;
   border-radius: 10px;
   padding: 2em;
+  cursor: pointer;
 `;
 
 export const FeedbackTop = styled.div`
@@ -27,8 +28,6 @@ export const Upvotes = styled.div`
 
 export const UpvotesImg = styled.img`
   src: url(${(props) => props.src});
-  // width: 10px;
-  // height: 6px;
 `;
 
 export const UpvotesNum = styled.p`

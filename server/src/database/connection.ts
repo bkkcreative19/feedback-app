@@ -8,7 +8,7 @@ const AppDataSource = new DataSource({
   username: "postgres",
   password: "basketball10",
   database: "product-feedback",
-  entities: ["src/entities/*.ts"],
+  entities: Object.values(entities),
   synchronize: true,
 });
 

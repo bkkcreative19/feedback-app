@@ -2,7 +2,9 @@ import express from "express";
 import cors from "cors";
 import insertData from "./database/seed";
 import { AppDataSource } from "./database/connection";
+import morgan from "morgan";
 import { Feedback } from "./entities";
+import routes from "./routes";
 
 const app = express();
 
@@ -20,31 +22,14 @@ const initializeExpress = (): void => {
   const app = express();
   app.use(cors());
   app.use(express.json());
-  // app.use(morgan("tiny"));
 
-  app.get("/", async (_req, res) => {
-    const feedbacks = await insertData();
+  app.use(morgan("tiny"));
+  app.use("/api", routes);
 
-    res.json(feedbacks);
-  });
-
-  app.get("/feedbacks", async (_req, res) => {
-    const repository = AppDataSource.getRepository(Feedback);
-
-    const feedbacks = await repository.find();
-    res.json(feedbacks);
-  });
-
-  app.get("/feedback", async (_req, res) => {
-    const repository = AppDataSource.getRepository(Feedback);
-
-    const feedback = await repository.find({
-      where: {
-        id: 1,
-      },
-    });
-    res.json(feedback[0]);
-  });
+  // app.get("/", async (_req, res) => {
+  //   const data = await insertData();
+  //   res.send(data);
+  // });
 
   const PORT = process.env.PORT || 5001;
 
