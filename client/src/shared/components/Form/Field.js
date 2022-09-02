@@ -3,12 +3,18 @@ import PropTypes from "prop-types";
 import { uniqueId } from "lodash";
 
 import Input from "../Input";
-// import Select from "shared/components/Select";
-// import Textarea from "shared/components/Textarea";
+import Select from "../Select";
+import Textarea from "../TextArea";
 // import TextEditor from "shared/components/TextEditor";
 // import DatePicker from "shared/components/DatePicker";
 
-import { StyledField, FieldLabel, FieldTip, FieldError } from "./Styles";
+import {
+  StyledField,
+  FieldLabel,
+  FieldTip,
+  FieldError,
+  FieldSubLabel,
+} from "./Styles";
 
 const propTypes = {
   className: PropTypes.string,
@@ -33,6 +39,7 @@ const generateField = (FormComponent) => {
     tip,
     error,
     name,
+    subLabel,
     ...otherProps
   }) => {
     const fieldId = uniqueId("form-field-");
@@ -44,6 +51,9 @@ const generateField = (FormComponent) => {
         data-testid={name ? `form-field:${name}` : "form-field"}
       >
         {label && <FieldLabel htmlFor={fieldId}>{label}</FieldLabel>}
+        {subLabel && (
+          <FieldSubLabel htmlFor={fieldId}>{subLabel}</FieldSubLabel>
+        )}
         <FormComponent
           id={fieldId}
           invalid={!!error}
@@ -64,8 +74,8 @@ const generateField = (FormComponent) => {
 
 export default {
   Input: generateField(Input),
-  //   Select: generateField(Select),
-  //   Textarea: generateField(Textarea),
+  Select: generateField(Select),
+  Textarea: generateField(Textarea),
   //   TextEditor: generateField(TextEditor),
   //   DatePicker: generateField(DatePicker),
 };

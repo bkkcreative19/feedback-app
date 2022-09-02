@@ -1,5 +1,35 @@
 import React, { forwardRef } from "react";
-import { StyledButton } from "./Styles";
+import { StyledButton, Text } from "./Styles";
+import PropTypes from "prop-types";
+
+const propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.node,
+  variant: PropTypes.oneOf([
+    "purple",
+    "darkBlue",
+    "red",
+    "lightBlue",
+    "empty",
+    "textPrimary",
+  ]),
+  icon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  iconSize: PropTypes.number,
+  disabled: PropTypes.bool,
+  isWorking: PropTypes.bool,
+  onClick: PropTypes.func,
+};
+
+const defaultProps = {
+  className: undefined,
+  children: undefined,
+  variant: "purple",
+  icon: undefined,
+  iconSize: 18,
+  disabled: false,
+  isWorking: false,
+  onClick: () => {},
+};
 
 export const Button = forwardRef(
   (
@@ -8,18 +38,18 @@ export const Button = forwardRef(
       variant,
       //   icon,
       //   iconSize,
-      //   disabled,
-      //   isWorking,
-      //   onClick,
+      disabled,
+      isWorking,
+      onClick,
       ...buttonProps
     },
     ref
   ) => {
-    // const handleClick = () => {
-    //   if (!disabled && !isWorking) {
-    //     onClick();
-    //   }
-    // };
+    const handleClick = () => {
+      if (!disabled && !isWorking) {
+        onClick();
+      }
+    };
 
     return (
       <StyledButton
@@ -40,3 +70,6 @@ export const Button = forwardRef(
     );
   }
 );
+
+Button.propTypes = propTypes;
+Button.defaultProps = defaultProps;

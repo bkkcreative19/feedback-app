@@ -1,21 +1,23 @@
 import styled, { css } from "styled-components";
 
-// import { color, font } from "shared/utils/styles";
+import { color } from "../../utils/styles";
 // import Icon from "shared/components/Icon";
 
 export const StyledInput = styled.div`
   position: relative;
   display: inline-block;
-  height: 32px;
+  height: 45px;
   width: 100%;
+  margin-top: 1.5em;
 `;
 
 export const InputElement = styled.input`
   height: 100%;
   width: 100%;
   padding: 0 7px;
-  border-radius: 3px;
-
+  border-radius: 10px;
+  border: none;
+  background: ${color.lightGrey};
   transition: background 0.1s;
 
   &:hover {

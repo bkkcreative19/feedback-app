@@ -8,7 +8,20 @@ export const StyledField = styled.div`
 
 export const FieldLabel = styled.label`
   display: block;
-  padding-bottom: 5px;
+
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.194444px;
+
+  color: #3a4374;
+`;
+export const FieldSubLabel = styled.label`
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+
+  color: #647196;
 `;
 
 export const FieldTip = styled.div`
