@@ -7,6 +7,7 @@ export const FeedbackStyles = styled.div`
   border-radius: 10px;
   padding: 3em;
   cursor: pointer;
+  position: relative;
 `;
 
 export const FeedbackTop = styled.div`
@@ -84,7 +85,7 @@ export const CommentNumber = styled.span`
 `;
 
 export const Status = styled.span`
-  margin-left: 5.5em;
+  // margin-left: 5.5em;
   background: #f2f4ff;
   border-radius: 10px;
   width: fit-content;
@@ -94,4 +95,6 @@ export const Status = styled.span`
   line-height: 19px;
   margin-top: 1em;
   color: #4661e6;
+  position: relative;
+  left: 5em;
 `;

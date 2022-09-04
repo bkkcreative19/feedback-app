@@ -5,9 +5,8 @@ import { useNavigate } from "react-router-dom";
 
 export const GoBack = ({ color }) => {
   const navigate = useNavigate();
-  console.log(navigate);
   return (
-    <GoBackStyles>
+    <GoBackStyles onClick={() => navigate(-1)}>
       <IoIosArrowBack color={color} size="1.4em" />
       <GoBackText>Go Back</GoBackText>
     </GoBackStyles>

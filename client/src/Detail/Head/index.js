@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { EditFeedback, GoBack, GoBackIcon, HeadStyles } from "./Styles";
 import BackIcon from "../../assets/shared/icon-arrow-left.svg";
 
-export const Head = () => {
+export const Head = ({ feedback }) => {
   return (
     <HeadStyles>
       <Link to="/">
@@ -12,7 +12,9 @@ export const Head = () => {
           Go Back
         </GoBack>
       </Link>
-      <EditFeedback>Edit Feedback</EditFeedback>
+      <Link to="/edit-feedback" state={{ data: { feedback } }}>
+        <EditFeedback>Edit Feedback</EditFeedback>
+      </Link>
     </HeadStyles>
   );
 };

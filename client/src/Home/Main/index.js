@@ -6,7 +6,7 @@ import { MainStyles } from "./Styles";
 export const Main = ({ feedbacks }) => {
   return (
     <MainStyles>
-      <Header />
+      <Header feedbackLength={feedbacks.length} />
       <FeedbackList feedbacks={feedbacks} />
     </MainStyles>
   );

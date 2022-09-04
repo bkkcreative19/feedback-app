@@ -9,8 +9,12 @@ import {
   FormLogo,
 } from "./Styles";
 import { TiPlus } from "react-icons/ti";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { categoryList } from "../shared/constants/selectOptions";
 
 export const CreateFeedback = () => {
+  const navigate = useNavigate();
   return (
     <>
       <GoBack color="#4661E6" />
@@ -28,6 +32,17 @@ export const CreateFeedback = () => {
         }}
         onSubmit={async (values, form) => {
           console.log(values);
+          const { data } = await axios.post(
+            "http://localhost:5001/api/feedbacks",
+            {
+              title: values.title,
+              category: values.category.toLowerCase(),
+              upvotes: 0,
+              status: "bug",
+              description: values.detail,
+            }
+          );
+          navigate("/");
         }}
       >
         <FormElement>
@@ -44,16 +59,8 @@ export const CreateFeedback = () => {
             name="category"
             label="Category"
             subLabel="Choose a category for your feedback"
-            options={[
-              { value: 1, label: "1" },
-              { value: 2, label: "2" },
-            ]}
+            options={categoryList}
           />
-          {/* <Form.Field.Input
-            label="Feedback Detail"
-            name="detail"
-            subLabel="Include any specific comments on what should be improved, added, etc."
-          /> */}
           <Form.Field.Textarea
             label="Feedback Detail"
             name="detail"

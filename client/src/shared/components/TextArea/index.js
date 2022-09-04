@@ -26,6 +26,7 @@ const Textarea = forwardRef(
       onChange={(event) => onChange(event.target.value, event)}
       className={className}
       invalid={invalid}
+      value={textareaProps.value}
     >
       {/* <TextareaAutoSize
         {...textareaProps}

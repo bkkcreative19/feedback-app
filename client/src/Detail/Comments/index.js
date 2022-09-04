@@ -3,7 +3,6 @@ import { Comment } from "./Comment";
 import { CommentsHead, CommentsStyles } from "./Styles";
 
 export const Comments = ({ comments }) => {
-  console.log(comments);
   return (
     <CommentsStyles>
       <CommentsHead>{comments && comments.length} Comments</CommentsHead>

@@ -26,7 +26,7 @@ export const Details = () => {
 
   return (
     <DetailsStyles>
-      <Head />
+      <Head feedback={feedback} />
       <Feedback feedback={feedback} />
       <Comments comments={feedback.comments} />
       <AddComment />

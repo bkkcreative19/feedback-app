@@ -9,4 +9,5 @@ export const StyledTextarea = styled.textarea`
   height: 96px;
   width: 100%;
   margin-top: 1.5em;
+  padding: 0.7em;
 `;

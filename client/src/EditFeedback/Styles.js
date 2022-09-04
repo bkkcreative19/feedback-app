@@ -43,11 +43,14 @@ export const FormHeading = styled.h2`
 export const Actions = styled.div`
   display: flex;
   margin-top: 3em;
-  justify-content: end;
+  //   justify-content: end;
 `;
 
 export const ActionButton = styled(Button)`
   &:first-child {
-    margin-right: 1.5em;
+    margin-right: auto;
+  }
+  &:last-child {
+    margin-left: 1.5em;
   }
 `;
