@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import useOnOutsideClick from "../../hooks/onOutsideClick";
 import { KeyCodes } from "../../constants/keyCodes";
 import Icon from "../Icon";
-import Dropdown from "./Dropdown";
+import { DropDown } from "./Dropdown";
 import { DownArrow as Hey } from "../../../assets/shared/icon-arrow-down.svg";
 import { IoIosArrowDown } from "react-icons/io";
 import { SelectedInput, StyledSelect } from "./Styles";
@@ -19,6 +19,7 @@ const Select = ({ name, options, ...props }) => {
   };
 
   useOnOutsideClick(selectRef, isOpen, deactivateDropdown);
+
   return (
     <StyledSelect ref={selectRef}>
       <SelectedInput>{props.value}</SelectedInput>
@@ -29,7 +30,7 @@ const Select = ({ name, options, ...props }) => {
         size="1.5em"
       />
       {isOpen && (
-        <Dropdown
+        <DropDown
           deactivateDropdown={deactivateDropdown}
           onChange={props.onChange}
           options={options}

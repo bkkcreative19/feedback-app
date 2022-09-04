@@ -24,10 +24,10 @@ export const SelectedInput = styled.p`
 
 export const DropdownStyles = styled.div`
   position: absolute;
-  top: 6em;
-  left: 0;
+  top: ${(props) => (props.isInput ? "6em" : "9em")};
+  left: ${(props) => (props.isInput ? "0" : "22em")};
   background: #fff;
-  width: 100%;
+  width: ${(props) => (props.isInput ? "100%" : "20%")};
   z-index: 1000;
   box-shadow: 0px 10px 40px -7px rgba(55, 63, 104, 0.350492);
   border-radius: 10px;

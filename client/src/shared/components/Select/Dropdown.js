@@ -6,17 +6,27 @@ import { KeyCodes } from "../../constants/keyCodes";
 
 import { DropdownStyles, Option } from "./Styles";
 
-const SelectDropdown = ({ options, deactivateDropdown, onChange }) => {
-  const [isCreatingOption, setCreatingOption] = useState(false);
-  console.log(onChange);
+const defaultProps = {
+  isInput: true,
+};
+
+export const DropDown = ({
+  options,
+  deactivateDropdown,
+  onChange,
+  isInput,
+  setOption,
+}) => {
   return (
-    <DropdownStyles>
+    <DropdownStyles isInput={isInput}>
       {options.map((option) => {
         return (
           <Option
             onClick={() => {
               onChange(option);
               deactivateDropdown(false);
+
+              // !isInput && setOption(option);
             }}
             key={option}
           >
@@ -28,4 +38,6 @@ const SelectDropdown = ({ options, deactivateDropdown, onChange }) => {
   );
 };
 
-export default SelectDropdown;
+// export default SelectDropdown;
+
+DropDown.defaultProps = defaultProps;

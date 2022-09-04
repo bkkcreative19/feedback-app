@@ -3,10 +3,14 @@ import { FeedbackList } from "./FeedbackList";
 import { Header } from "./Header";
 import { MainStyles } from "./Styles";
 
-export const Main = ({ feedbacks }) => {
+export const Main = ({ feedbacks, sortSelected, setSortSelected }) => {
   return (
     <MainStyles>
-      <Header feedbackLength={feedbacks.length} />
+      <Header
+        setSortSelected={setSortSelected}
+        sortSelected={sortSelected}
+        feedbackLength={feedbacks.length}
+      />
       <FeedbackList feedbacks={feedbacks} />
     </MainStyles>
   );
