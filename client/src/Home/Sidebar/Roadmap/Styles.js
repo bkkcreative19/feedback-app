@@ -43,7 +43,7 @@ export const RoadmapOption = styled.div`
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: red;
+    background: ${(props) => props.color};
   }
 `;
 export const RoadmapOptionText = styled.h4`

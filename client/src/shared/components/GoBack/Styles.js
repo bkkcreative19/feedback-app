@@ -7,9 +7,9 @@ export const GoBackStyles = styled.div`
 `;
 
 export const GoBackText = styled.h3`
-  font-weight: 700;
+  font-weight: 600;
   font-size: 14px;
   line-height: 20px;
-  color: #647196;
+  color: ${(props) => props.color};
   margin-left: 0.5em;
 `;

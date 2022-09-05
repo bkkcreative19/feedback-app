@@ -15,7 +15,7 @@ import { getFeedbacks } from "../shared/services/feedbacks";
 
 export const Home = () => {
   // const [feedbacks, setFeedbacks] = useState([]);
-  const [sortSelected, setSortSelected] = useState("Least Upvotes");
+  const [sortSelected, setSortSelected] = useState("Most Upvotes");
   const [filter, setFilter] = useState("All");
 
   const {

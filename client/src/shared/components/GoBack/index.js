@@ -8,7 +8,7 @@ export const GoBack = ({ color }) => {
   return (
     <GoBackStyles onClick={() => navigate(-1)}>
       <IoIosArrowBack color={color} size="1.4em" />
-      <GoBackText>Go Back</GoBackText>
+      <GoBackText color={color}>Go Back</GoBackText>
     </GoBackStyles>
   );
 };
