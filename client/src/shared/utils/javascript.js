@@ -15,3 +15,20 @@ export const capitalizeFirstLetter = (string) => {
 
   return arr.join("");
 };
+export const lowerCaseFirstLetter = (string) => {
+  //   const firstLetter = string.slice(0, 1).toUpperCase();
+  if (string.length <= 2) return string.toLowerCase();
+
+  const arr = Array.from(string);
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === "-") {
+      arr[i + 1] = arr[i + 1].toLowerCase();
+    }
+    if (i === 0) {
+      arr[i] = arr[i].toLowerCase();
+    }
+  }
+
+  return arr.join("");
+};

@@ -3,11 +3,11 @@ import { Head } from "./Head";
 import { Roadmap } from "./Roadmap";
 import { Selections } from "./Selections";
 
-export const Sidebar = () => {
+export const Sidebar = ({ setFilter, currentFilter }) => {
   return (
     <div>
       <Head />
-      <Selections />
+      <Selections currentFilter={currentFilter} setFilter={setFilter} />
       <Roadmap />
     </div>
   );

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { color } from "../../../shared/utils/styles";
 
 export const SelectionsStyle = styled.div`
   background: #ffffff;
@@ -19,12 +20,12 @@ export const SelectionRow = styled.div`
 `;
 
 export const Selection = styled.div`
-  background: #f2f4ff;
+  background: ${(props) => (props.isCurrent === true ? color.blue : "#f2f4ff")};
   border-radius: 10px;
   font-weight: 600;
   font-size: 13px;
   line-height: 19px;
   padding: 0.5em 1.5em;
-  color: #4661e6;
+  color: ${(props) => (props.isCurrent === true ? "#ffffff" : " #4661e6")};
   cursor: pointer;
 `;
