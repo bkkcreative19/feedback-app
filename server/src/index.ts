@@ -6,8 +6,6 @@ import morgan from "morgan";
 import { Feedback } from "./entities";
 import routes from "./routes";
 
-const app = express();
-
 const establishDatabaseConnection = async () => {
   // console.log(flatten(tasks));
 

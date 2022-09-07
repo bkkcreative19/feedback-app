@@ -1,18 +1,23 @@
 // import { FindOneOptions } from "typeorm/find-options/FindOneOptions";
-import { Feedback, User, Comment } from "../entities";
+import { Feedback, User, Comment, Reply } from "../entities";
 import { AppDataSource } from "../database/connection";
 import { EntityNotFoundError, BadUserInputError } from "../errors";
 
 import { generateErrors } from "./validation";
 
-type EntityConstructor = typeof Feedback | typeof User | typeof Comment;
+type EntityConstructor =
+  | typeof Feedback
+  | typeof User
+  | typeof Comment
+  | typeof Reply;
 
-type EntityInstance = Feedback | User | Comment;
+type EntityInstance = Feedback | User | Comment | Reply;
 
 const entities: { [key: string]: EntityConstructor } = {
   Feedback,
   User,
   Comment,
+  Reply,
 };
 
 export const findEntityOrThrow = async <T extends EntityConstructor>(

@@ -22,3 +22,10 @@ export const ColumnHeadDesc = styled.div`
 
   color: #647196;
 `;
+
+export const ColumnFeedbacks = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4em;
+  margin-top: 3em;
+`;

@@ -1,35 +1,41 @@
-import axios from "axios";
-import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Feedback } from "../shared/components/Feedback";
 import { AddComment } from "./AddComment";
 import { Comments } from "./Comments";
 import { Head } from "./Head";
 import { DetailsStyles } from "./Styles";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { createComment } from "../shared/services/comments";
+import { getFeedback } from "../shared/services/feedbacks";
 
 export const Details = () => {
   const params = useParams();
-  const [feedback, setFeedback] = useState({});
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const { data } = await axios.get(
-        `http://localhost:5001/api/feedbacks/${Number(params.feedbackId)}`
-      );
-      // console.log(data);
-      setFeedback(data);
-    };
+  const queryClient = useQueryClient();
 
-    fetchData();
-  }, [params.feedbackId]);
-  // console.log(params);
+  const { data: feedback, isLoading } = useQuery(
+    ["feedback", params.feedbackId],
+    getFeedback
+  );
+
+  const mutation = useMutation(createComment, {
+    onSuccess: () => {
+      queryClient.invalidateQueries(["feedback"]);
+    },
+  });
+
+  const handleCreateComment = (input) => {
+    mutation.mutate(input, feedback.id);
+  };
+
+  if (isLoading) return "...loading";
 
   return (
     <DetailsStyles>
       <Head feedback={feedback} />
       <Feedback feedback={feedback} />
       <Comments comments={feedback.comments} />
-      <AddComment />
+      <AddComment feedbackId={feedback.id} handleCreate={handleCreateComment} />
     </DetailsStyles>
   );
 };

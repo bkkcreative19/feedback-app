@@ -1,11 +1,24 @@
 import styled from "styled-components";
 
+export const ItemBackground = styled.div`
+  background: ${(props) => props.color};
+  border-radius: 10px;
+  height: 272px;
+  // position: relative;
+`;
+
 export const ItemStyles = styled.div`
   color: blue;
-  border-radius: 10px;
+  height: inherit;
+  // display: none;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
   background: #fff;
-  margin-top: 2em;
+  margin-top: 1em;
+  // height: 50%;
   padding: 2.5em;
+  // position: relative;
+  // top: 0.7em;
 `;
 
 export const ItemStatus = styled.span`

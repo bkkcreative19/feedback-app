@@ -2,6 +2,7 @@ import React from "react";
 import {
   Comment,
   CommentNumber,
+  ItemBackground,
   ItemBottom,
   ItemCategory,
   ItemDesc,
@@ -14,23 +15,25 @@ import {
 import { MdOutlineKeyboardArrowUp } from "react-icons/md";
 import { FaRegComment } from "react-icons/fa";
 
-export const Item = ({ feedback }) => {
+export const Item = ({ feedback, color }) => {
   return (
-    <ItemStyles>
-      <ItemStatus>{feedback.status}</ItemStatus>
-      <ItemTitle>{feedback.title}</ItemTitle>
-      <ItemDesc>{feedback.description}</ItemDesc>
-      <ItemCategory>{feedback.category}</ItemCategory>
-      <ItemBottom>
-        <ItemUpvotes>
-          <MdOutlineKeyboardArrowUp size="1.5em" />
-          <UpvotesNum>{feedback.upvotes}</UpvotesNum>
-        </ItemUpvotes>
-        <Comment>
-          <FaRegComment color="#CDD2EE" size="1.7em" />
-          <CommentNumber>{feedback.comments.length}</CommentNumber>
-        </Comment>
-      </ItemBottom>
-    </ItemStyles>
+    <ItemBackground color={color}>
+      <ItemStyles>
+        <ItemStatus>{feedback.status}</ItemStatus>
+        <ItemTitle>{feedback.title}</ItemTitle>
+        <ItemDesc>{feedback.description}</ItemDesc>
+        <ItemCategory>{feedback.category}</ItemCategory>
+        <ItemBottom>
+          <ItemUpvotes>
+            <MdOutlineKeyboardArrowUp size="1.5em" />
+            <UpvotesNum>{feedback.upvotes}</UpvotesNum>
+          </ItemUpvotes>
+          <Comment>
+            <FaRegComment color="#CDD2EE" size="1.7em" />
+            <CommentNumber>{feedback.comments.length}</CommentNumber>
+          </Comment>
+        </ItemBottom>
+      </ItemStyles>
+    </ItemBackground>
   );
 };

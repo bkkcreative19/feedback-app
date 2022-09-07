@@ -1,6 +1,7 @@
 import React from "react";
 import { Item } from "./Item";
 import {
+  ColumnFeedbacks,
   ColumnHead,
   ColumnHeadDesc,
   ColumnHeadName,
@@ -20,9 +21,12 @@ export const Column = ({ column, feedbacks }) => {
         </ColumnHeadName>
         <ColumnHeadDesc>{column.desc}</ColumnHeadDesc>
       </ColumnHead>
-      {rightFeedbacks.map((feedback, id) => {
-        return <Item color={column.color} key={id} feedback={feedback} />;
-      })}
+
+      <ColumnFeedbacks>
+        {rightFeedbacks.map((feedback, id) => {
+          return <Item color={column.color} key={id} feedback={feedback} />;
+        })}
+      </ColumnFeedbacks>
     </ColumnStyles>
   );
 };

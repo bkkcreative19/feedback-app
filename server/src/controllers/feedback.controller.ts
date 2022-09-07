@@ -29,7 +29,7 @@ export const listFeedback = async (req: Request, res: Response) => {
     where: {
       id: Number(req.params.feedbackId),
     },
-    relations: ["comments.user"],
+    relations: ["comments.user", "comments.replies.user"],
   });
 
   res.send(feedback[0]);
