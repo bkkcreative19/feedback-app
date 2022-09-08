@@ -67,7 +67,7 @@ export const CreateFeedback = () => {
             subLabel="Include any specific comments on what should be improved, added, etc."
           />
           <Actions>
-            <ActionButton variant="textPrimary" type="submit">
+            <ActionButton variant="textPrimary" type="button">
               Cancel
             </ActionButton>
             <ActionButton type="submit">Add Feedback</ActionButton>

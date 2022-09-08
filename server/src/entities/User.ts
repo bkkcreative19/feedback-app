@@ -25,6 +25,10 @@ class User extends BaseEntity {
   username: string;
 
   @Column("varchar")
+  @Length(4, 20)
+  name: string;
+
+  @Column("varchar")
   @Length(4, 100)
   password: string;
 

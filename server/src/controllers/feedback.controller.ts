@@ -9,14 +9,14 @@ import {
   updateEntity,
 } from "../utils/typeorm";
 
-export const listFeedbacks = async (_req: Request, res: Response) => {
+export const listFeedbacks = async (_req: any, res: Response) => {
   const feedbackRepository = AppDataSource.getRepository(Feedback);
   const feedbacks = await feedbackRepository.find();
 
   res.send(feedbacks);
 };
 
-export const listFeedback = async (req: Request, res: Response) => {
+export const listFeedback = async (req: any, res: Response) => {
   const feedbackRepository = AppDataSource.getRepository(Feedback);
   // const feedback = await feedbackRepository.find({
   //   relations: ["comments.user"],

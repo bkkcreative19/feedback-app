@@ -5,6 +5,9 @@ import { AppDataSource } from "./database/connection";
 import morgan from "morgan";
 import { Feedback } from "./entities";
 import routes from "./routes";
+import * as dotenv from "dotenv";
+
+dotenv.config();
 
 const establishDatabaseConnection = async () => {
   // console.log(flatten(tasks));

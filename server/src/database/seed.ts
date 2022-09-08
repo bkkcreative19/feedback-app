@@ -61,9 +61,9 @@ const seedComments = async (feedbackId: any): Promise<any> => {
 
 const insertData = async (): Promise<any> => {
   const feedbacks = await seedFeedbacks();
-  const comments = await seedComments(feedbacks[0].id);
+
   // console.log(comments.flat());
-  return comments;
+  return feedbacks;
 };
 
 export default insertData;

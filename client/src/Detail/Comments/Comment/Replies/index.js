@@ -21,7 +21,7 @@ export const Replies = ({ replies, replyingTo }) => {
                 {reply.user.username}
                 <span style={{ display: "block" }}>@hi</span>
               </ReplyName>
-              <ReplyReply>Reply</ReplyReply>
+              {/* <ReplyReply>Reply</ReplyReply> */}
             </ReplyTop>
             <ReplyText>
               <span> @{replyingTo.username}</span>

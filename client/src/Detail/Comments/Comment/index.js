@@ -18,6 +18,8 @@ export const Comment = ({ comment }) => {
   const [reply, setReply] = useState("");
   const queryClient = useQueryClient();
 
+  const user = JSON.parse(localStorage.getItem("data"));
+
   const mutation = useMutation(createReply, {
     onSuccess: () => {
       queryClient.invalidateQueries(["feedback"]);
@@ -40,7 +42,9 @@ export const Comment = ({ comment }) => {
           {comment.user.username}
           <span style={{ display: "block" }}>@hi</span>
         </CommentName>
-        <CommentReply onClick={handleChange}>Reply</CommentReply>
+        {user.user.id !== comment.user.id && (
+          <CommentReply onClick={handleChange}>Reply</CommentReply>
+        )}
       </CommentTop>
       <CommentText>{comment.content}</CommentText>
       <div

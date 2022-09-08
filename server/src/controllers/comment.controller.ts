@@ -4,22 +4,17 @@ import { Request, Response } from "express";
 import { createEntity, findEntityOrThrow } from "../utils/typeorm";
 import { AppDataSource } from "../database/connection";
 
-export const createComment = async (req: Request, res: Response) => {
+export const createComment = async (req: any, res: Response) => {
   const feedback = await findEntityOrThrow(Feedback, {
     where: {
       id: Number(req.params.feedbackId),
-    },
-  });
-  const user = await findEntityOrThrow(User, {
-    where: {
-      id: 2,
     },
   });
 
   const comment = await createEntity(Comment, {
     content: req.body.content,
     feedback: feedback[0].id,
-    user: user[0].id,
+    user: req.user.id,
   });
 
   res.send(comment);
