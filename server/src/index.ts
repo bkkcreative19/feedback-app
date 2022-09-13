@@ -3,7 +3,6 @@ import cors from "cors";
 import insertData from "./database/seed";
 import { AppDataSource } from "./database/connection";
 import morgan from "morgan";
-import { Feedback } from "./entities";
 import routes from "./routes";
 import * as dotenv from "dotenv";
 
@@ -32,7 +31,7 @@ const initializeExpress = (): void => {
     res.send(data);
   });
 
-  const PORT = process.env.PORT || 5001;
+  const PORT = process.env.PORT || 5002;
 
   app.listen(PORT);
 };

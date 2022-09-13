@@ -2,8 +2,17 @@ import styled from "styled-components";
 import { Button } from "../shared/components/Button";
 import { Form } from "../shared/components/Form";
 
+export const CreateFromContainer = styled.section`
+  display: flex;
+  flex-direction: column;
+  max-width: 540px;
+
+  @media screen and (max-width: 650px) {
+    margin: 2em;
+  }
+`;
+
 export const FormElement = styled(Form.Element)`
-  width: 540px;
   background: #fff;
   padding: 3.5em;
   margin-top: 4em;
@@ -44,10 +53,23 @@ export const Actions = styled.div`
   display: flex;
   margin-top: 3em;
   justify-content: end;
+
+  @media screen and (max-width: 650px) {
+    flex-direction: column;
+    gap: 1.5em;
+  }
 `;
 
 export const ActionButton = styled(Button)`
   &:first-child {
     margin-right: 1.5em;
+
+    @media screen and (max-width: 650px) {
+      margin-right: 0;
+    }
+  }
+
+  @media screen and (max-width: 650px) {
+    width: 100%;
   }
 `;

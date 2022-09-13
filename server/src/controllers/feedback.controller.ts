@@ -8,6 +8,7 @@ import {
   findEntityOrThrow,
   updateEntity,
 } from "../utils/typeorm";
+import console from "console";
 
 export const listFeedbacks = async (_req: any, res: Response) => {
   const feedbackRepository = AppDataSource.getRepository(Feedback);
@@ -17,14 +18,6 @@ export const listFeedbacks = async (_req: any, res: Response) => {
 };
 
 export const listFeedback = async (req: any, res: Response) => {
-  const feedbackRepository = AppDataSource.getRepository(Feedback);
-  // const feedback = await feedbackRepository.find({
-  //   relations: ["comments.user"],
-  //   where: {
-  //     id: Number(req.params.feedbackId),
-  //   },
-  // });
-
   const feedback = await findEntityOrThrow(Feedback, {
     where: {
       id: Number(req.params.feedbackId),

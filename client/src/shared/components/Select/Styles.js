@@ -27,10 +27,14 @@ export const DropdownStyles = styled.div`
   top: ${(props) => (props.isInput ? "6em" : "9em")};
   left: ${(props) => (props.isInput ? "0" : "22em")};
   background: #fff;
-  width: ${(props) => (props.isInput ? "100%" : "20%")};
+  width: ${(props) => (props.isInput ? "100%" : "255px")};
   z-index: 1000;
   box-shadow: 0px 10px 40px -7px rgba(55, 63, 104, 0.350492);
   border-radius: 10px;
+
+  @media screen and (max-width: 600px) {
+    left: ${(props) => (props.isInput ? "0" : "2em")};
+  }
 `;
 
 export const Option = styled.p`

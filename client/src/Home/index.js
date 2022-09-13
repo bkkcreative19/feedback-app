@@ -12,9 +12,11 @@ import { Sidebar } from "./Sidebar";
 import { HomeStyle } from "./Styles";
 import Skeleton from "react-loading-skeleton";
 import { getFeedbacks } from "../shared/services/feedbacks";
+import { MobileHeader } from "./MobileHeader";
 
 export const Home = () => {
   // const [feedbacks, setFeedbacks] = useState([]);
+
   const [sortSelected, setSortSelected] = useState("Most Upvotes");
   const [filter, setFilter] = useState("All");
 
@@ -35,15 +37,13 @@ export const Home = () => {
 
   return (
     <HomeStyle>
+      <MobileHeader currentFilter={filter} setFilter={setFilter} />
       <Sidebar currentFilter={filter} setFilter={setFilter} />
       <Main
         setSortSelected={setSortSelected}
         sortSelected={sortSelected}
         feedbacks={sortedFilteredFeedbacks}
       />
-      {/* {feedbacks.map((feedback) => {
-        return <h1>{feedback.title}</h1>;
-      })} */}
     </HomeStyle>
   );
 };

@@ -24,7 +24,7 @@ export const Login = () => {
     axios
       .get("http://localhost:5001/api/user/isUserAuth", {
         headers: {
-          "x-access-token": JSON.parse(localStorage.getItem("data")).token,
+          "x-access-token": JSON.parse(localStorage.getItem("data"))?.token,
         },
       })
       .then(({ data }) => (data.isLoggedIn ? navigate("/") : null));

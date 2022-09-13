@@ -12,14 +12,30 @@ html {
 
 body {
   font-family: "Jost", sans-serif;
-  display: flex;
-  height: 100vh;
-  justify-content: center;
+
   margin: 7em 0;
   background: #f2f2f2;
+}
+
+#root {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  justify-content: center;
+}
+
+#root div {
+  /* width: 100%; */
+  /* margin: 0 auto; */
 }
 
 a {
   text-decoration: none;
   color: #333;
+}
+
+@media screen and (max-width: 600px) {
+  body {
+    margin: 0;
+  }
 }

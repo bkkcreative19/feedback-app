@@ -4,6 +4,7 @@ import { GoBack } from "../shared/components/GoBack";
 import {
   ActionButton,
   Actions,
+  CreateFromContainer,
   FormElement,
   FormHeading,
   FormLogo,
@@ -12,11 +13,20 @@ import { TiPlus } from "react-icons/ti";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { categoryList } from "../shared/constants/selectOptions";
+import { useMutation } from "@tanstack/react-query";
+import { createFeedback } from "../shared/services/feedbacks";
 
 export const CreateFeedback = () => {
   const navigate = useNavigate();
+
+  const createFeedbackMutation = useMutation(createFeedback);
+
+  const handleSubmit = (input) => {
+    createFeedbackMutation.mutate(input);
+  };
+
   return (
-    <>
+    <CreateFromContainer>
       <GoBack color="#4661E6" />
       <Form
         enableReinitialize
@@ -31,17 +41,14 @@ export const CreateFeedback = () => {
           detail: Form.is.required(),
         }}
         onSubmit={async (values, form) => {
-          console.log(values);
-          const { data } = await axios.post(
-            "http://localhost:5001/api/feedbacks",
-            {
-              title: values.title,
-              category: values.category.toLowerCase(),
-              upvotes: 0,
-              status: "bug",
-              description: values.detail,
-            }
-          );
+          handleSubmit({
+            title: values.title,
+            category: values.category.toLowerCase(),
+            upvotes: 0,
+            status: "bug",
+            description: values.detail,
+          });
+
           navigate("/");
         }}
       >
@@ -74,6 +81,6 @@ export const CreateFeedback = () => {
           </Actions>
         </FormElement>
       </Form>
-    </>
+    </CreateFromContainer>
   );
 };

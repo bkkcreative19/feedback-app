@@ -3,16 +3,20 @@ import styled from "styled-components";
 export const FeedbackStyles = styled.div`
   display: flex;
   background: #fff;
-  flex-direction: column;
+  // flex-direction: column;
   border-radius: 10px;
+  align-items: center;
   padding: 3em;
   cursor: pointer;
   position: relative;
-`;
 
-export const FeedbackTop = styled.div`
-  display: flex;
-  width: 100%;
+  @media screen and (max-width: 600px) {
+    flex-direction: column;
+    align-items: start;
+    & div {
+      // display: inline-flex;
+    }
+  }
 `;
 
 export const Upvotes = styled.div`
@@ -23,6 +27,12 @@ export const Upvotes = styled.div`
   align-items: center;
   height: fit-content;
   padding: 1em;
+  width: fit-content;
+  align-self: flex-start;
+  @media screen and (max-width: 600px) {
+    flex-direction: row;
+    order: 1;
+  }
   // width: 40px;
 `;
 
@@ -40,6 +50,11 @@ export const UpvotesNum = styled.p`
 
 export const TextContent = styled.div`
   margin-left: 3em;
+
+  @media screen and (max-width: 600px) {
+    margin: 0;
+    // display: flex;
+  }
 `;
 
 export const Title = styled.h4`
@@ -65,7 +80,12 @@ export const Comment = styled.div`
   margin-left: auto;
   display: flex;
   align-items; center;
-  align-self: end;
+
+
+  // @media screen and (max-width: 600px) {
+  //  position: absolute;
+  //  bottom: 4em;
+  // }
 `;
 
 export const CommentImage = styled.img`
@@ -84,7 +104,7 @@ export const CommentNumber = styled.span`
   color: #3a4374;
 `;
 
-export const Status = styled.span`
+export const Status = styled.p`
   // margin-left: 5.5em;
   background: #f2f4ff;
   border-radius: 10px;
@@ -95,6 +115,10 @@ export const Status = styled.span`
   line-height: 19px;
   margin-top: 1em;
   color: #4661e6;
-  position: relative;
-  left: 5em;
+  // position: relative;
+  // left: 5em;
+
+  @media screen and (max-width: 600px) {
+    // left: 0;
+  }
 `;

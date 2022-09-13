@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import {
   ActionButton,
   HeaderStyles,
+  IconStyles,
   Sort,
   SortBy,
   SortDropdown,
@@ -9,10 +10,9 @@ import {
   Suggestions,
 } from "./Styles";
 import { Icon } from "./Icon";
-import { IoIosArrowDown } from "react-icons/io";
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import useOnOutsideClick from "../../../shared/hooks/onOutsideClick";
-import Dropdown from "../../../shared/components/Select/Dropdown";
 
 export const Header = ({ feedbackLength, sortSelected, setSortSelected }) => {
   const navigate = useNavigate();
@@ -27,13 +27,15 @@ export const Header = ({ feedbackLength, sortSelected, setSortSelected }) => {
 
   return (
     <HeaderStyles>
-      <Icon />
+      <IconStyles>
+        <Icon />
+      </IconStyles>
       <Suggestions>{feedbackLength} Suggestions</Suggestions>
       <SortBy ref={dropdownRef}>
         <Span>Sort by :</Span>
-        <Sort onClick={() => setIsOpen(true)}>
+        <Sort onClick={() => setIsOpen(!isOpen)}>
           {sortSelected}
-          <IoIosArrowDown />
+          {isOpen ? <IoIosArrowUp /> : <IoIosArrowDown />}
         </Sort>
 
         {isOpen && (

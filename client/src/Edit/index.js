@@ -8,19 +8,32 @@ import { categoryList, statusList } from "../shared/constants/selectOptions";
 import {
   ActionButton,
   Actions,
+  EditFromContainer,
   FormElement,
   FormHeading,
   FormLogo,
 } from "./Styles";
 import { capitalizeFirstLetter } from "../shared/utils/javascript";
+import { useMutation } from "@tanstack/react-query";
+import { updateFeedback } from "../shared/services/feedbacks";
 
 export const EditFeedback = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { feedback } = location.state.data;
 
+  const updateFeedbackMutation = useMutation(updateFeedback, {
+    // onSuccess: () => {
+    //   queryClient.invalidateQueries(["feedback"]);
+    // },
+  });
+
+  const handleUpdateFeedback = (input) => {
+    updateFeedbackMutation.mutate(input);
+  };
+
   return (
-    <>
+    <EditFromContainer>
       <GoBack color="#4661E6" />
       <Form
         enableReinitialize
@@ -36,15 +49,14 @@ export const EditFeedback = () => {
           detail: Form.is.required(),
         }}
         onSubmit={async (values, form) => {
-          const { data } = await axios.put(
-            `http://localhost:5001/api/feedbacks/${feedback.id}`,
-            {
-              title: values.title,
-              category: values.category,
-              status: values.status,
-              description: values.detail,
-            }
-          );
+          handleUpdateFeedback({
+            title: values.title,
+            category: values.category,
+            status: values.status,
+            description: values.detail,
+            feedbackId: feedback.id,
+          });
+
           navigate("/");
         }}
       >
@@ -100,6 +112,6 @@ export const EditFeedback = () => {
           </Actions>
         </FormElement>
       </Form>
-    </>
+    </EditFromContainer>
   );
 };

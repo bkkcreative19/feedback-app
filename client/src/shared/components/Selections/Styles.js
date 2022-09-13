@@ -14,6 +14,10 @@ export const SelectionRow = styled.div`
   display: flex;
   gap: 1.5rem;
 
+  @media screen and (max-width: 1200px) {
+    width: fit-content;
+  }
+
   &:not(:first-child) {
     margin-top: 1.5em;
   }
@@ -28,4 +32,8 @@ export const Selection = styled.div`
   padding: 0.5em 1.5em;
   color: ${(props) => (props.isCurrent === true ? "#ffffff" : " #4661e6")};
   cursor: pointer;
+
+  &:hover {
+    background: #cfd7ff;
+  }
 `;

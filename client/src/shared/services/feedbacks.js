@@ -10,3 +10,14 @@ export const getFeedback = async (info) => {
   const { data } = await instance.get(`/feedbacks/${id}`);
   return data;
 };
+
+export const updateFeedback = async (info) => {
+  const id = info.feedbackId;
+  const { data } = await instance.put(`/feedbacks/${id}`, info);
+  return data;
+};
+
+export const createFeedback = async (input) => {
+  const { data } = await instance.post("/feedbacks", input);
+  return data;
+};
