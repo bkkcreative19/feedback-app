@@ -8,4 +8,8 @@ export const ColumnsStyles = styled.div`
   @media screen and (max-width: 850px) {
     gap: 1em;
   }
+
+  @media screen and (max-width: 700px) {
+    display: none;
+  }
 `;

@@ -1,5 +1,5 @@
 import React from "react";
-import { Item } from "./Item";
+import { RoadmapItem } from "../../../shared/components/RoadmapItem";
 import {
   ColumnFeedbacks,
   ColumnHead,
@@ -24,7 +24,9 @@ export const Column = ({ column, feedbacks }) => {
 
       <ColumnFeedbacks>
         {rightFeedbacks.map((feedback, id) => {
-          return <Item color={column.color} key={id} feedback={feedback} />;
+          return (
+            <RoadmapItem color={column.color} key={id} feedback={feedback} />
+          );
         })}
       </ColumnFeedbacks>
     </ColumnStyles>

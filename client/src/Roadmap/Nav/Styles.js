@@ -7,6 +7,10 @@ export const NavStyles = styled.nav`
   display: flex;
   padding: 2em;
   border-radius: 10px;
+
+  @media screen and (max-width: 700px) {
+    border-radius: 0;
+  }
 `;
 
 export const Left = styled.div`

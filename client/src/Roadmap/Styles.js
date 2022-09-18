@@ -7,4 +7,7 @@ export const RoadmapStyles = styled.section`
     margin: 0 2em;
   // }
 
+  @media screen and (max-width: 700px) {
+    margin: 0;
+  }
 `;

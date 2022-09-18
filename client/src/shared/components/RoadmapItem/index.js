@@ -15,7 +15,7 @@ import {
 import { MdOutlineKeyboardArrowUp } from "react-icons/md";
 import { FaRegComment } from "react-icons/fa";
 
-export const Item = ({ feedback, color }) => {
+export const RoadmapItem = ({ feedback, color }) => {
   return (
     <ItemBackground color={color}>
       <ItemStyles>
